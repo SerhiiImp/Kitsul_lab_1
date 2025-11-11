@@ -1,0 +1,31 @@
+<nav>
+    <a href="/">Головна</a> |
+    <a href="{% url 'articles-list' %}">Всі публікації</a> |
+    {% if item.category %}
+        <a href="{{ item.category.get_absolute_url }}">{{ item.category|upper }}</a>
+    {% endif %}
+</nav>
+<ol class="breadcrumb">
+    <li><a href="/">Головна</a></li>
+    <li><a href="{% url 'articles-list' %}">Публікації</a></li>
+    {% if item.category %}
+        <li><a href="{{ item.category.get_absolute_url }}">{{ item.category|upper }}</a></li>
+    {% endif %}
+    <li>{{ item.title|upper }}</li>
+</ol>
+<a href="{% url 'articles-list' %}">&larr; Назад до списку публікацій</a>
+<!-- ...контент статті... -->
+<footer>
+    &copy; Твій блог 2025
+</footer>
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/">Головна</a></li>
+    <li class="breadcrumb-item"><a href="{% url 'articles-list' %}">Публікації</a></li>
+    {% if item.category %}
+      <li class="breadcrumb-item"><a href="{{ item.category.get_absolute_url }}">{{ item.category|upper }}</a></li>
+    {% endif %}
+    <li class="breadcrumb-item active" aria-current="page">{{ item.title|upper }}</li>
+  </ol>
+</nav>
+<a class="btn btn-outline-primary" href="{% url 'articles-list' %}">← Повернутись до списку публікацій</a>
